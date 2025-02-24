@@ -1,7 +1,6 @@
-// import logo from './logo.svg';
 import React from "react";
 import { useState } from "react";
-import "./App.css";
+// import "./App.css";
 const messages = [
   "Learn React ⚛️",
   "Apply for jobs 💼",
@@ -13,12 +12,12 @@ function App() {
   let [isOpen, setisOpen] = useState(true);
   function previous() {
     if (step >= 2) {
-      setStep(step - 1);
+      setStep(() => step - 1);
     }
   }
   function next() {
     if (step <= 2) {
-      setStep(step + 1);
+      setStep(() => step + 1);
     }
   }
   return (
@@ -32,7 +31,7 @@ function App() {
             <div className="numbers">
               <div className={step === 1 ? "active" : ""}>1</div>
               <div className={step === 2 ? "active" : ""}>2</div>
-              <div classNae={step === 3 ? "active" : ""}>3</div>
+              <div className={step === 3 ? "active" : ""}>3</div>
             </div>
 
             <p className="message">
