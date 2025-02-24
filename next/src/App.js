@@ -1,13 +1,13 @@
 import React from "react";
 import { useState } from "react";
-// import "./App.css";
+import "./App.css";
 const messages = [
   "Learn React ⚛️",
   "Apply for jobs 💼",
   "Invest your new income 🤑",
 ];
 
-function App() {
+export default function App() {
   const [step, setStep] = useState(1);
   let [isOpen, setisOpen] = useState(true);
   function previous() {
@@ -58,5 +58,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
