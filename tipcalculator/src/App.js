@@ -12,7 +12,7 @@ const App = () => {
 export default App;
 
 function TipCalculator() {
-  const [amt, setAmt] = useState(0);
+  const [amt, setAmt] = useState("");
   const [youlike, setYoulike] = useState(0);
   const [frdlike, setfrdlike] = useState(0);
 
@@ -28,6 +28,16 @@ function TipCalculator() {
         setfrdlike={setfrdlike}
       />
       <Output amt={amt} per={per} />
+
+      <button
+        onClick={() => {
+          setAmt("");
+          setYoulike(0);
+          setfrdlike(0);
+        }}
+      >
+        Reset
+      </button>
     </div>
   );
 }
