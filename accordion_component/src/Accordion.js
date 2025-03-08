@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./index.css";
 
 export function Accordion() {
+  const [CurrOpen, setCurrOpen] = useState(null);
   return (
     <div className="accordion">
       {faqs.map((data, index) => (
@@ -10,17 +11,20 @@ export function Accordion() {
           title={data.title}
           content={data.text}
           key={index}
+          CurrOpen={CurrOpen}
+          setCurrOpen={setCurrOpen}
         />
       ))}
     </div>
   );
 }
 
-function AccordionItems({ index, title, content }) {
-  const [isopen, setIsopen] = useState(false);
+function AccordionItems({ index, title, content, CurrOpen, setCurrOpen }) {
+  // const [isopen, setIsopen] = useState(false);
+  const isopen = index === CurrOpen;
 
   function handleOpen() {
-    setIsopen((isopen) => !isopen);
+    setCurrOpen(isopen ? null : index);
   }
 
   return (
