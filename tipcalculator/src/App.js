@@ -1,25 +1,88 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <TipCalculator />
+    </div>
+  );
+};
+
+export default App;
+
+function TipCalculator() {
+  const [amt, setAmt] = useState(0);
+  const [youlike, setYoulike] = useState(0);
+  const [frdlike, setfrdlike] = useState(0);
+
+  const per = Math.round(amt * ((youlike + frdlike) / 2 / 100)).toFixed(2);
+
+  return (
+    <div className="container">
+      <Bill amt={amt} setAmt={setAmt} />
+      <Services
+        youlike={youlike}
+        setYoulike={setYoulike}
+        frdlike={frdlike}
+        setfrdlike={setfrdlike}
+      />
+      <Output amt={amt} per={per} />
     </div>
   );
 }
 
-export default App;
+function Bill({ amt, setAmt }) {
+  return (
+    <>
+      <div>
+        <p>How much the Bill</p>
+        <input
+          type="text"
+          value={amt}
+          onChange={(e) => setAmt(Number(e.target.value))}
+        />
+      </div>
+    </>
+  );
+}
+
+function Services({ youlike, setYoulike, frdlike, setfrdlike }) {
+  return (
+    <>
+      <div>
+        <p>How did you like the services?</p>
+        <select
+          value={youlike}
+          onChange={(e) => setYoulike(Number(e.target.value))}
+        >
+          <option value="0">Simply Waste (0%)</option>
+          <option value="5">It was okay (5%)</option>
+          <option value="10">It was good (10%)</option>
+          <option value="20">It was amazing (20%)</option>
+        </select>
+      </div>
+
+      <div>
+        <p>How did your Friend like the services?</p>
+        <select
+          value={frdlike}
+          onChange={(e) => setfrdlike(Number(e.target.value))}
+        >
+          <option value="0">Simply Waste (0%)</option>
+          <option value="5">It was okay (5%)</option>
+          <option value="10">It was good (10%)</option>
+          <option value="20">It was amazing (20%)</option>
+        </select>
+      </div>
+    </>
+  );
+}
+
+function Output({ amt, per }) {
+  return (
+    <div>
+      <h4>{`Total Amount : ${amt + per} (${amt} + ${per})`}</h4>
+    </div>
+  );
+}
