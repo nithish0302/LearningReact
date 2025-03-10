@@ -116,11 +116,13 @@ export default function App() {
   function add(e) {
     e.preventDefault();
     console.log("Added:", description);
-    setDescription(""); // Clear input after adding
+    setDescription("");
   }
 
   return (
     <div>
+      <h4>HI</h4>
+
       <input
         type="text"
         value={description}
