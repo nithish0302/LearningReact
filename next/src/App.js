@@ -22,6 +22,7 @@ export default function App() {
   }
   return (
     <div>
+      <h4>HI</h4>
       <button className="close" onClick={() => setisOpen((is) => !is)}>
         &times;
       </button>
